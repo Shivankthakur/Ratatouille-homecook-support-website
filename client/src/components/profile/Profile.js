@@ -8,12 +8,25 @@ import ProfileAbout from './ProfileAbout';
 import ProfileExperience from './ProfileExperience';
 import ProfileEducation from './ProfileEducation';
 import ProfileGithub from './ProfileGithub';
-import { getProfileById } from '../../actions/profile';
+import { getProfileById, updateExperience } from '../../actions/profile';
 
-const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
+const Profile = ({ getProfileById, updateExperience, profile: { profile }, auth, match }) => {
   useEffect(() => {
     getProfileById(match.params.id);
   }, [getProfileById, match.params.id]);
+
+  const dishisCart = (id) => {
+    console.log(`${id} changing isCart`)
+    // profile.experience.forEach((exp, i, array) => {
+    //   if (exp._id.toString() === id) {
+    //     console.log(`${id}.isCart = ${exp.isCart}`)
+    //     profile.experience[i].isCart = true;
+    //     console.log(`${id}.isCart = ${exp.isCart}`)
+    //   }
+    // });
+    updateExperience(id, "add");
+    console.log(`${id} changed!`)
+  }
 
   return (
     <Fragment>
@@ -39,15 +52,22 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
               {profile.experience.length > 0 ? (
                 <Fragment>
                   {profile.experience.map((experience) => (
-                    <ProfileExperience
-                      key={experience._id}
-                      experience={experience}
-                    />
+                    <>
+                      <button onClick={() => dishisCart(experience._id)}>Add</button>
+                      <ProfileExperience
+                        key={experience._id}
+                        experience={experience}
+                      />      
+                    </>
                   ))}
+                  <Link to={`/cart/${match.params.id}`} className="btn btn-primary">
+                    Go to Cart
+                  </Link>
                 </Fragment>
               ) : (
                 <h4>No Menu Items</h4>
               )}
+            
             </div>
 
             {/* <div className="profile-edu bg-white p-2">
@@ -66,9 +86,9 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
               )}
             </div> */}
 
-            {profile.githubusername && (
+            {/* {profile.githubusername && (
               <ProfileGithub username={profile.githubusername} />
-            )}
+            )} */}
           </div>
         </Fragment>
       )}
@@ -78,6 +98,7 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
 
 Profile.propTypes = {
   getProfileById: PropTypes.func.isRequired,
+  updateExperience: PropTypes.func,
   profile: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired
 };
@@ -87,4 +108,4 @@ const mapStateToProps = (state) => ({
   auth: state.auth
 });
 
-export default connect(mapStateToProps, { getProfileById })(Profile);
+export default connect(mapStateToProps, { getProfileById, updateExperience })(Profile);

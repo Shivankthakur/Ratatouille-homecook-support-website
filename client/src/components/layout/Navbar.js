@@ -13,11 +13,11 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
       <li>
         <Link to="/posts">Foodie Forum</Link>
       </li>
-      <li>
-        <Link to="/cart">
+      {/* <li>
+        <Link to="/cart/:id">
           <i className="fas fa-shopping-cart" /> My Cart
         </Link>
-      </li>
+      </li> */}
       <li>
         <Link to="/orders">
           <i className="fas fa-concierge-bell" /> My Orders

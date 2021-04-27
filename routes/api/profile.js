@@ -278,4 +278,52 @@ router.get('/github/:username', async (req, res) => {
   }
 });
 
+// @route    UPDATE api/profile/experience/:exp_id
+// @desc     Update experience from profile
+// @access   Private
+
+router.put('/experience/:exp_id', auth, async (req, res) => {
+  try {
+    const foundProfile = await Profile.findOne({ user: req.user.id });
+
+    foundProfile.experience.forEach(
+      (exp, i, array) => {
+        if(exp._id.toString() === req.params.exp_id) {
+          array[i].isCart = true;
+        }
+      }
+    );
+
+    await foundProfile.save();
+    return res.status(200).json(foundProfile);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ msg: 'Server error' });
+  }
+});
+
+// @route    UPDATE api/profile/experience/:exp_id
+// @desc     Update experience from profile
+// @access   Private
+
+router.put('/experience/clear', auth, async (req, res) => {
+  try {
+    const foundProfile = await Profile.findOne({ user: req.user.id });
+
+    foundProfile.experience.forEach(
+      (exp, i, array) => {
+        array[i].isCart = false;
+      }
+    );
+
+    await foundProfile.save();
+    return res.status(200).json(foundProfile);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ msg: 'Server error' });
+  }
+});
+
+
+
 module.exports = router;

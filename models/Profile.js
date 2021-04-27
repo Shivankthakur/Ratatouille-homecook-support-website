@@ -54,6 +54,10 @@ const ProfileSchema = new mongoose.Schema({
       },
       description: {
         type: String
+      },
+      isCart: {
+        type: Boolean,
+        default: false
       }
     }
   ],

@@ -5,7 +5,9 @@ import {
   UPDATE_PROFILE,
   GET_PROFILES,
   GET_REPOS,
-  NO_REPOS
+  NO_REPOS,
+  UPDATE_EXPERIENCE,
+  CLEAR_EXPERIENCE
 } from '../actions/types';
 
 const initialState = {
@@ -57,6 +59,12 @@ function profileReducer(state = initialState, action) {
         ...state,
         repos: []
       };
+    case UPDATE_EXPERIENCE:
+    case CLEAR_EXPERIENCE:
+      return {
+        ...state,
+        profile: payload
+      }
     default:
       return state;
   }

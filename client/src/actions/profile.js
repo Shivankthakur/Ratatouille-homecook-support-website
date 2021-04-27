@@ -9,7 +9,9 @@ import {
   CLEAR_PROFILE,
   ACCOUNT_DELETED,
   GET_REPOS,
-  NO_REPOS
+  NO_REPOS,
+  UPDATE_EXPERIENCE,
+  CLEAR_EXPERIENCE
 } from './types';
 
 // Get current users profile
@@ -222,3 +224,44 @@ export const deleteAccount = () => async (dispatch) => {
     }
   }
 };
+
+// Update experience - isCart
+export const updateExperience = (id) => async (dispatch) => {
+  try {
+    const res = await api.put(`/profile/experience/${id}`);
+
+    dispatch({
+      type: UPDATE_EXPERIENCE,
+      payload: res.data
+    });
+
+    dispatch(setAlert('Dish Updated', 'success'));
+  } catch (err) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};
+
+// Update experience - isCart
+export const clearExperience = () => async (dispatch) => {
+  try {
+    const res = await api.put(`/profile/experience/clear`);
+
+    dispatch({
+      type: CLEAR_EXPERIENCE,
+      payload: res.data
+    });
+
+    dispatch(setAlert('Dish Updated', 'success'));
+  } catch (err) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};
+
+
+
