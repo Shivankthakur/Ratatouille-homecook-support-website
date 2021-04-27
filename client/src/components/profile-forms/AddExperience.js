@@ -64,60 +64,36 @@ const AddExperience = ({ addExperience, history }) => {
           addExperience(formData, history);
         }}
       >
-        <div>
-          
-        <TextField
-          id="outlined-full-width"
-          style={{ margin: 8 }}
-          placeholder="* Dish Name"
-          name="title"
-          value={title}
-          onChange={onChange}
-          required
-          fullWidth
-          margin="normal"
-          InputLabelProps={{
-            shrink: true,
-            style: { color: 'white'},
-          }}
-          variant="filled"
-        />
+        <div className="form-group">
+        <input
+            type="text"
+            placeholder="* Dish Name"
+            name="title"
+             value={title}
+            onChange={onChange}
+          />
+        
         </div>
-        <div>
-        <TextField
-          id="outlined-full-width"
-          style={{ margin: 8 }}
-          placeholder="* Cuisine (example: Chinese, Indian)"
-          name="company"
-          value={company}
-          onChange={onChange}
-          required
-          fullWidth
-          margin="normal"
-          InputLabelProps={{
-            shrink: true,
-            style: { color: 'white'},
-          }}
-          variant="filled"
-        />
+        <div className="form-group">
+        <input
+            type="text"
+            placeholder="* Cuisine (example: Chinese, Indian)"
+            name="company"
+            value={company}
+            onChange={onChange}
+          />
+        
+        
         </div>
-        <div>
-        <TextField
-          id="outlined-full-width"
-          style={{ margin: 8 }}
-          placeholder="* Price (INR)"
-          name="location"
+        <div className="form-group">
+        <input
+            type="text"
+            placeholder="* Price (INR)"
+            name="location"
           value={location}
           onChange={onChange}
-          required
-          fullWidth
-          margin="normal"
-          InputLabelProps={{
-            shrink: true,
-            style: { color: 'white'},
-          }}
-          variant="filled"
-        />
+          />
+        
         </div>
         {/* <div className="form-group">
           <h4>From Date</h4>
@@ -147,23 +123,15 @@ const AddExperience = ({ addExperience, history }) => {
             disabled={current}
           />
         </div> */}
-        <div>
-        <TextField
-          id="outlined-full-width"
-          style={{ margin: 8 }}
-          placeholder="About Dish"
+        <div className="form-group">
+        <input
+            type="text"
+            placeholder="About Dish"
           name="description"
           value={description}
           onChange={onChange}
-          required
-          fullWidth
-          margin="normal"
-          InputLabelProps={{
-            shrink: true,
-            style: { color: 'white'},
-          }}
-          variant="filled"
-        />
+          />
+        
 
         </div>
         <input type="submit" className="btn btn-primary my-1" value= "Submit"/>
