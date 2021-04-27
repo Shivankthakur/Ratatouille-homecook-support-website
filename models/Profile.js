@@ -10,24 +10,19 @@ const ProfileSchema = new mongoose.Schema(
             type: String,
             trim: true
         },
+        status: {
+            type: String
+        },
         username: {
             type: String,
             trim: true,
             required: true
         },
-        city: {
+        location: {
             type: String,
             trim: true
         },
-        state: {
-            type: String,
-            trim: true
-        },
-        country: {
-            type: String,
-            trim: true
-        },
-        about: {
+        bio: {
             type: String,
             trim: true
         },
@@ -54,7 +49,13 @@ const ProfileSchema = new mongoose.Schema(
                 type: String,
                 trim: true
             }
-        }
+        },
+        dishes: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'dish'
+            }
+        ]
     },
     { timestamps: true }
 );

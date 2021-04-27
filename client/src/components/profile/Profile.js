@@ -6,14 +6,15 @@ import Spinner from '../layout/Spinner';
 import ProfileTop from './ProfileTop';
 import ProfileAbout from './ProfileAbout';
 import ProfileExperience from './ProfileExperience';
-import ProfileEducation from './ProfileEducation';
-import ProfileGithub from './ProfileGithub';
+// import ProfileEducation from './ProfileEducation';
+// import ProfileGithub from './ProfileGithub';
 import { getProfileById } from '../../actions/profile';
 
 const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
   useEffect(() => {
     getProfileById(match.params.id);
   }, [getProfileById, match.params.id]);
+
 
   return (
     <Fragment>
@@ -36,7 +37,7 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
             <ProfileAbout profile={profile} />
             <div className="profile-exp bg-white p-2">
               <h2 className="text-primary">Menu</h2>
-              {profile.experience.length > 0 ? (
+              {profile.dishes.length > 0 ? (
                 <Fragment>
                   {profile.experience.map((experience) => (
                     <ProfileExperience
@@ -66,9 +67,9 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
               )}
             </div> */}
 
-            {profile.githubusername && (
+            {/* {profile.githubusername && (
               <ProfileGithub username={profile.githubusername} />
-            )}
+            )} */}
           </div>
         </Fragment>
       )}

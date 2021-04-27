@@ -5,11 +5,11 @@ import { connect } from 'react-redux';
 import { createProfile, getCurrentProfile } from '../../actions/profile';
 
 const initialState = {
-  company: '',
+  name: '',
   website: '',
   location: '',
   status: '',
-  skills: '',
+  specialities: '',
   githubusername: '',
   bio: '',
   twitter: '',
@@ -39,18 +39,18 @@ const ProfileForm = ({
       for (const key in profile.social) {
         if (key in profileData) profileData[key] = profile.social[key];
       }
-      if (Array.isArray(profileData.skills))
-        profileData.skills = profileData.skills.join(', ');
+      if (Array.isArray(profileData.specialities))
+        profileData.specialities = profileData.specialities.join(', ');
       setFormData(profileData);
     }
   }, [loading, getCurrentProfile, profile]);
 
   const {
-    company,
+    name,
     website,
     location,
     status,
-    skills,
+    specialities,
     // githubusername,
     bio,
     twitter,
@@ -93,8 +93,8 @@ const ProfileForm = ({
           <input
             type="text"
             placeholder="Shop Name"
-            name="company"
-            value={company}
+            name="name"
+            value={name}
             onChange={onChange}
           />
           <small className="form-text">
@@ -129,8 +129,8 @@ const ProfileForm = ({
           <input
             type="text"
             placeholder="* Specialities"
-            name="skills"
-            value={skills}
+            name="specialities"
+            value={specialities}
             onChange={onChange}
           />
           <small className="form-text">

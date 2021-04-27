@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const ProfileAbout = ({
   profile: {
     bio,
-    skills,
+    specialities,
     user: { name }
   }
 }) => (
@@ -18,7 +18,7 @@ const ProfileAbout = ({
     )}
     <h2 className='text-primary'>Shop Specialities</h2>
     <div className='skills'>
-      {skills.map((skill, index) => (
+      {specialities.map((skill, index) => (
         <div key={index} className='p-1'>
           <i className='fas fa-check' /> {skill}
         </div>

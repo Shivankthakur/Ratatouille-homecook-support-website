@@ -1,19 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import formatDate from '../../utils/formatDate';
+// import formatDate from '../../utils/formatDate';
 
 const ProfileExperience = ({
-  experience: { company, title, location, current, to, from, description }
+  experience: { category, name, price, description }
 }) => (
   <div>
     <p>
-      <strong>Dish Name: </strong> {title}
+      <strong>Dish Name: </strong> {name}
     </p>
     <p>
-      <strong>Cuisine: </strong> {company}
+      <strong>Cuisine: </strong> {category}
     </p>
     <p>
-      <strong>Price: </strong> {location}
+      <strong>Price: </strong> {price}
     </p>
     <p>
       <strong>About Dish: </strong> {description}

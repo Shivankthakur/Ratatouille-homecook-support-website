@@ -18,16 +18,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Experience = ({ experience, deleteDish }) => {
+const Experience = ({ dishes, deleteDish }) => {
   const classes = useStyles();
-  const experiences = experience.map((exp) => (
+  const dish = profile.dishes.map((exp) => (
     <tr key={exp._id}>
-      <td>{exp.company}</td>
-      <td className="hide-sm">{exp.title}</td>
+      <td>{exp.name}</td>
+      <td className="hide-sm">{exp.category}</td>
       {/* <td>
         {formatDate(exp.from)} - {exp.to ? formatDate(exp.to) : 'Now'}
       </td> */}
-      <td className="hide-sm">{exp.location}</td>
+      <td className="hide-sm">{exp.price}</td>
       <td>
         <IconButton aria-label="delete"  onClick={() => deleteDish(exp._id)}>
           <DeleteIcon style={{ color: 'white' }} />
@@ -49,14 +49,14 @@ const Experience = ({ experience, deleteDish }) => {
             <th />
           </tr>
         </thead>
-        <tbody>{experiences}</tbody>
+        <tbody>{dish}</tbody>
       </table>
     </Fragment>
   );
 };
 
 Experience.propTypes = {
-  experience: PropTypes.array.isRequired,
+  dishes: PropTypes.array.isRequired,
   deleteDish: PropTypes.func.isRequired
 };
 

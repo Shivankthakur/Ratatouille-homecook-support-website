@@ -47,10 +47,8 @@ router.post(
 
         const {
             name,
-            city,
-            state,
-            country,
-            about,
+            location,
+            bio,
             cuisines,
             specialities,
             youtube,
@@ -66,10 +64,8 @@ router.post(
         profileFields.user = req.user.id;
         profileFields.username = user.username;
         if (name) profileFields.name = name;
-        if (city) profileFields.city = city;
-        if (state) profileFields.state = state;
-        if (country) profileFields.country = country;
-        if (about) profileFields.about = about;
+        if (location) profileFields.location = location;
+        if (bio) profileFields.bio = bio;
         if (cuisines)
             profileFields.cuisines = cuisines
                 .split(',')

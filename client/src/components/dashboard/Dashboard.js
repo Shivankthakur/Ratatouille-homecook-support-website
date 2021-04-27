@@ -35,8 +35,7 @@ const Dashboard = ({
       {profile !== null ? (
         <Fragment>
           <DashboardActions />
-          <Experience experience={profile.experience} />
-          <Education education={profile.education} />
+          <Experience experience={profile.dishes}/>
 
           <div className='delete-btn'>
           <Button
