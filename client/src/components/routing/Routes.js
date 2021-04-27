@@ -15,6 +15,7 @@ import NotFound from '../layout/NotFound';
 import PrivateRoute from '../routing/PrivateRoute';
 import Cart from '../cart/Cart'
 import Orders from '../orders/Orders'
+import DashboardAdmin from '../dashboardAdmin/Dashboard'
 // import Admin from '../admin/Admin'
 
 const Routes = props => {
@@ -28,6 +29,7 @@ const Routes = props => {
         <Route exact path="/profile/:id" component={Profile} />
         {/* <Route exact path="/admin" component={Admin} />    */}
         <PrivateRoute exact path="/dashboard" component={Dashboard} />
+        <PrivateRoute exact path="/dashboardAdmin" component={DashboardAdmin} />
         <PrivateRoute exact path="/create-profile" component={ProfileForm} />
         <PrivateRoute exact path="/edit-profile" component={ProfileForm} />
         <PrivateRoute exact path="/add-dish" component={AddExperience} />

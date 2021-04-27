@@ -3,9 +3,12 @@ import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-const Landing = ({ isAuthenticated }) => {
+const Landing = ({ isAuthenticated, auth }) => {
   if (isAuthenticated) {
-    return <Redirect to="/dashboard" />;
+    if(auth.user.id !== "6084de08929d9fc218a0ffc6")
+      return <Redirect to="/dashboard" />;
+    else
+      return <Redirect to="/dashboardAdmin" />;
   }
 
   return (
