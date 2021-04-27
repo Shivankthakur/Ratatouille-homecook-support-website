@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
 const Dashboard = ({
   getCurrentProfile,
   deleteAccount,
-  auth: { user, loading },
+  auth: { user },
   profile: { profile }
 }) => {
   const classes = useStyles();
@@ -52,19 +52,10 @@ const Dashboard = ({
         </Fragment>
       ) : (
         <Fragment>
-          {(!loading && user._id !== "6084de08929d9fc218a0ffc6")  && (
-            <p>You have not yet setup a shop yet</p>
-          )}
-          {(!loading && user._id !== "6084de08929d9fc218a0ffc6") && (
-            <Link to="/create-profile" className="btn btn-primary my-1">
-              Create Shop
-            </Link>
-          )}
-          {(!loading &&  user._id === "6084de08929d9fc218a0ffc6") && (
-            <Link to="/admin" className="btn btn-primary my-1">
-              Statistics
-            </Link>
-          )}
+          <p>You have not yet setup a shop yet</p>
+          <Link to="/create-profile" className="btn btn-primary my-1">
+            Create Shop
+          </Link>
         </Fragment>
       )}
     </Fragment>
