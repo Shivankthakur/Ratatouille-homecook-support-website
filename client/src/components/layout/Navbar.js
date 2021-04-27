@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../../actions/auth';
 
-const Navbar = ({ auth: { isAuthenticated }, logout }) => {
+const Navbar = ({ auth: { user, isAuthenticated }, logout }) => {
   const authLinks = (
     <ul>
       <li>
@@ -38,6 +38,29 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
     </ul>
   );
 
+  const adminLinks = (
+    <ul>
+      <li>
+        <Link to="/profiles">Shops</Link>
+      </li>
+      <li>
+        <Link to="/posts">Foodie Forum</Link>
+      </li>
+      <li>
+        <Link to="/dashboard">
+          <i className="fas fa-user" />
+          <span className="hide-sm"> Dashboard</span>
+        </Link>
+      </li>
+      <li>
+        <a onClick={logout} href="#!">
+          <i className="fas fa-sign-out-alt" />{' '}
+          <span className="hide-sm">Logout</span>
+        </a>
+      </li>
+    </ul>
+  );
+
   const guestLinks = (
     <ul>
       <li>
@@ -59,7 +82,7 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
           <i className="fas fa-utensils"></i> Ratatouille
         </Link>
       </h1>
-      <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>
+      <Fragment>{isAuthenticated ? (user._id === "6084de08929d9fc218a0ffc6" ? adminLinks:authLinks) : guestLinks}</Fragment>
     </nav>
   );
 };
