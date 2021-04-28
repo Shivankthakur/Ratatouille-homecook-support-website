@@ -3,17 +3,17 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
-import ProfileTop from '../profile/ProfileTop';
-import ProfileAbout from '../profile/ProfileAbout';
+// import ProfileTop from '../profile/ProfileTop';
+// import ProfileAbout from '../profile/ProfileAbout';
 import ProfileExperience from '../profile/ProfileExperience';
 import { getProfileById, clearExperience } from '../../actions/profile';
 // import { getProfiles } from '../../actions/profile';
 
 
-const Cart = ({ getProfileById, updateExperience, profile: { profile }, auth, match }) => {
+const Cart = ({ getProfileById, clearExperience, profile: { profile }, auth, match }) => {
   useEffect(() => {
     getProfileById(match.params.id);
-  }, [getProfileById, match.params.id]);
+  }, [getProfileById, clearExperience, match.params.id]);
 
   const clearCart = () => {
     console.log(`Clearing isCart`)
@@ -24,10 +24,20 @@ const Cart = ({ getProfileById, updateExperience, profile: { profile }, auth, ma
     //     console.log(`${id}.isCart = ${exp.isCart}`)
     //   }
     // });
+    // console.log("BEFORE");
+    // console.log(profile.experience);
+    // profile.experience.forEach(
+    //   (exp, i, array) => {
+    //     exp.isCart = true;
+    //   }
+    // );
+    // console.log("AFTER");
+    // console.log(profile.experience);
     clearExperience();
     console.log(`Cleared!`)
   }
 
+  let flag = false;
   return (
     <Fragment>
       {profile === null ? (
@@ -35,12 +45,18 @@ const Cart = ({ getProfileById, updateExperience, profile: { profile }, auth, ma
       ) : (
         <Fragment>
           <div className="profile-exp bg-white p-2">
-            <h2 className="text-primary">Menu</h2>
-            {profile.experience.length > 0 ? (
+            <h2 className="text-primary">Cart</h2>
+            {
+              profile.experience.forEach((exp, i, array) => {
+                if (array[i].isCart===true) {
+                  flag = true;
+                }
+              })
+            }
+            {flag === true ? (  
               <Fragment>
                 {profile.experience.map((experience) => (
                   <>
-                    {/* <button onClick={() => dishisCart(experience._id)}>Add</button> */}
                     {
                     experience.isCart === true && 
                     <ProfileExperience
@@ -50,10 +66,16 @@ const Cart = ({ getProfileById, updateExperience, profile: { profile }, auth, ma
                     }
                   </>
                 ))}
-                <button onClick={() => clearCart()}>Clear Cart</button>
+                <button onClick={clearCart}>Clear Cart</button>
               </Fragment>
             ) : (
+              <>
               <h4>Cart is Empty</h4>
+              <br />
+              <Link to="/profiles" className="btn btn-primary">
+                Back To Shops
+              </Link>
+              </>
             )}
           
           </div>

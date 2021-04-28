@@ -8,7 +8,6 @@ const ProfileExperience = ({
   <div>
     <p>
       <strong>Dish Name: </strong> {title}
-      {/* <button>Add</button> */}
     </p>
     <p>
       <strong>Cuisine: </strong> {company}

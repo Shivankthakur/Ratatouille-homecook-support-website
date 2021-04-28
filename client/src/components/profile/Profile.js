@@ -15,8 +15,8 @@ const Profile = ({ getProfileById, updateExperience, profile: { profile }, auth,
     getProfileById(match.params.id);
   }, [getProfileById, match.params.id]);
 
-  const dishisCart = (id) => {
-    console.log(`${id} changing isCart`)
+  const dishisCart = (pid, eid) => {
+    console.log(`${pid}.${eid} changing isCart`)
     // profile.experience.forEach((exp, i, array) => {
     //   if (exp._id.toString() === id) {
     //     console.log(`${id}.isCart = ${exp.isCart}`)
@@ -24,8 +24,8 @@ const Profile = ({ getProfileById, updateExperience, profile: { profile }, auth,
     //     console.log(`${id}.isCart = ${exp.isCart}`)
     //   }
     // });
-    updateExperience(id, "add");
-    console.log(`${id} changed!`)
+    updateExperience(pid, eid);
+    console.log(`${pid}.${eid} changed!`)
   }
 
   return (
@@ -53,7 +53,7 @@ const Profile = ({ getProfileById, updateExperience, profile: { profile }, auth,
                 <Fragment>
                   {profile.experience.map((experience) => (
                     <>
-                      <button onClick={() => dishisCart(experience._id)}>Add</button>
+                      <button onClick={() => dishisCart(match.params.id, experience._id)}>Add</button>
                       <ProfileExperience
                         key={experience._id}
                         experience={experience}

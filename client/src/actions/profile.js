@@ -226,9 +226,9 @@ export const deleteAccount = () => async (dispatch) => {
 };
 
 // Update experience - isCart
-export const updateExperience = (id) => async (dispatch) => {
+export const updateExperience = (pid, eid) => async (dispatch) => {
   try {
-    const res = await api.put(`/profile/experience/${id}`);
+    const res = await api.put(`/profile/experience/${pid}/${eid}`);
 
     dispatch({
       type: UPDATE_EXPERIENCE,
@@ -244,10 +244,10 @@ export const updateExperience = (id) => async (dispatch) => {
   }
 };
 
-// Update experience - isCart
+// Update experience - clear cart
 export const clearExperience = () => async (dispatch) => {
   try {
-    const res = await api.put(`/profile/experience/clear`);
+    const res = await api.put('/profile/experience/clear');
 
     dispatch({
       type: CLEAR_EXPERIENCE,
