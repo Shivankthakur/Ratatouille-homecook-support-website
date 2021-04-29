@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
 const Dashboard = ({
   getCurrentProfile,
   deleteAccount,
-  auth: { user, loading },
+  auth: { user },
   profile: { profile }
 }) => {
   const classes = useStyles();

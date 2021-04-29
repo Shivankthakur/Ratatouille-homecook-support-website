@@ -27,6 +27,11 @@ const Landing = ({ isAuthenticated, auth }) => {
               Login
             </Link>
           </div>
+          <div className="admin-btn">
+            <Link to="/admin" className="btn btn-dark btn-admin">
+              Login as Admin
+            </Link>
+          </div>
         </div>
       </div>
     </section>
